@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-img
-      src="https://scontent-nrt1-1.xx.fbcdn.net/v/t1.0-9/49025949_2136308929789220_1693793277427318784_o.jpg?_nc_cat=102&_nc_sid=825194&_nc_oc=AQm1LDffab0fr-fNwqPVW4fA4Nxnz1ZfpLLWvhbMfMeFdWxasYI7NlL4qfhweW-bZh-4tPfQA_Q1S1bk8DnS9sJn&_nc_ht=scontent-nrt1-1.xx&oh=3e26e4778ec6e70df9d5ed0538862f74&oe=5E93F952"
+      src="https://scontent-nrt1-1.xx.fbcdn.net/v/t1.0-9/49442049_2136301306456649_298560287894667264_o.jpg?_nc_cat=110&_nc_oc=AQm6SjyaXB34cG_zdLx5Rjuk7CQAXyr58Z3aMAGzJl1DIXZB1Of2MDH4kvU0-XyVTEKNOFVRFe6z2rOIb-vMisPO&_nc_ht=scontent-nrt1-1.xx&oh=b49d0781ed640818ae9d70e2c4e43499&oe=5EBAF5BD"
       max-height="250"
       to="/"
     >
@@ -24,21 +24,19 @@
         <v-expansion-panel>
           <v-expansion-panel-header>カテゴリ一覧</v-expansion-panel-header>
           <v-expansion-panel-content>
-            <v-btn href="categories/others" width="300" class="mx-auto my-2">
-              その他
-            </v-btn>
-            <v-btn href="categories/study" width="300" class="mx-auto my-2">
-              講座・勉強会
-            </v-btn>
-            <v-btn href="categories/making" width="300" class="mx-auto my-2">
-              作品制作・プロジェクト
-            </v-btn>
-            <v-btn href="categories/q" width="300" class="mx-auto my-2">
-              質問・アンケート
-            </v-btn>
-            <v-btn href="categories/notice" width="300" class="mx-auto my-2">
-              お知らせ
-            </v-btn>
+            <div
+              v-if="posts.length"
+            >
+              <v-btn
+                v-for="(post, i) in posts"
+                :key="i"
+                :to="linkTo('categories',post.fields.category)"
+                width="300"
+                class="mx-auto my-2"
+              >
+                {{ post.fields.category.fields.name }}
+              </v-btn>
+            </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
         <v-expansion-panel>
